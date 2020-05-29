@@ -7,7 +7,7 @@ app = Flask(__name__)
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'root'
-app.config['MYSQL_DB'] = 'fnt_schema'
+app.config['MYSQL_DB'] = 'register'
 mysql = MySQL(app)
 @app.route('/', methods=['GET', 'POST'])
 def register():
@@ -21,12 +21,12 @@ def register():
          real_date=[cur_date,cur_month,cur_year]
          session_date="-".join(real_date)
          cur = mysql.connection.cursor()
-         cur.execute("SELECT * FROM fnt_schema.fnt_schedule WHERE session_date=%s",(session_date,))
+         cur.execute("SELECT * FROM register.test_schedule WHERE session_date=%s",(session_date,))
          data=cur.fetchall()
          if len(data) > 0:
             return render_template('index.html',message="failed")
          else:
-            cur.execute("INSERT INTO fnt_schedule(full_name,topic_name,session_date) VALUES(%s,%s,%s)", (full_name,topic_name,session_date))
+            cur.execute("INSERT INTO test_schedule(full_name,topic_name,session_date) VALUES(%s,%s,%s)", (full_name,topic_name,session_date))
             mysql.connection.commit()
             cur.close()
             return render_template('index.html',message="success")
@@ -36,9 +36,9 @@ def register():
 def schedule():
     if request.method == "GET":
          cur = mysql.connection.cursor()
-         cur.execute("SELECT row_number() OVER(ORDER BY ID) AS ID,session_date,topic_name,full_name FROM fnt_schema.fnt_schedule ORDER BY id")
+         cur.execute("SELECT row_number() OVER(ORDER BY ID) AS ID,session_date,topic_name,full_name FROM register.test_schedule ORDER BY id")
          data = cur.fetchall()
     return render_template('schedule.html', value=data)
 
 if __name__ == '__main__':
-    app.run(debug=True,port=8080)
+    app.run(host='localhost',debug=True,port=8080)
