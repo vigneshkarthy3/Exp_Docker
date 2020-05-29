@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Test Registration</title>
+    <link rel= "stylesheet" href= "{{ url_for('static',filename='css/style.css') }}">
+    <meta charset="UTF-8">
+</head>
+<body>
+    <header>
+        <div class="main">
+            <div class="logo">
+                <img src="static/logo.png">
+            <ul>
+                <li class="active"><a href="http://127.0.0.1:8080/">Register</a></li>
+                <li><a href="http://127.0.0.1:8080/schedule">Schedule</a></li>
+            </ul>
+        </div>
+        <div id="register-box">
+        <div class="register">
+            <div class="reg-title"><H1>Test Register</H1><br><br></div>
+            <form id="Registration" class="input-group" method="POST" action="." >
+            <input type = "text" class="input-field" name= "topic" placeholder="Topic" required/> <br><br>
+            <input type = "text" class="input-field" name = "name" placeholder="Full Name" required/> <br><br>
+            <input type="date" class="input-field" name="sdate" placeholder="yyyy-mm-dd" required/> <br><br>
+            <input type = "submit" class="submit-btn" value="Register"><br>
+            <div class="bs-example"> 
+            {% if 'failed' in message %}
+                <div id="myAlert" class="alert alert-info alert-dismissible fade show" style="color: red">
+                <strong>Error!</strong> Please provide unregistered date.
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                </div>
+            {% else %}{% if 'success' in message %}
+                <div id="myAlert" class="alert alert-info alert-dismissible fade show" style="color: green">
+                    <strong>Success!</strong> Registered Successfully.
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                </div>
+            {% endif %}{% endif %}
+            </form>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </header>
+</body>
+</html>

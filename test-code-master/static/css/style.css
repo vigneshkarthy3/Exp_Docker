@@ -1,0 +1,129 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+header {
+    width:100vw;
+    height: 100vh; 
+    background: black;
+    background-image: url('fnt.png') ;
+    background-size: cover;
+    padding: 5px;
+    background-repeat: repeat;
+    position: absolute;
+    overflow-x: scroll;
+  }
+  
+ul{
+    float: right;
+    list-style-type: none;
+    margin-top: 35px;
+}
+ul li{
+    display: inline-block;
+}
+ul li a{
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 18px;
+    border: 1px solid transparent;
+    transition: 0.6s ease;
+}
+ul li a:hover{
+    background-color: #fff;
+    color: #000000;
+}
+ul li.active a{
+    background-color: #fff;
+    color: #000000;
+}
+
+.logo img{
+    float: left;
+    width: 75px;
+    height: auto;
+    margin-top: 35px;
+}
+.main{
+    max-width: 1200px;
+    margin: auto;
+}
+.title{
+    position: absolute;
+    top: 45%;
+    left: 40%;
+    transform: translate(-50%,-50%);
+}
+.title h1{
+    color: #fff;
+    font-size: 50px;
+    font-family: Century 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#register-box{
+    position: absolute;
+    text-align: center;
+    top: 25%;
+    left: 37%;
+    width: 400px;
+    height: 380px;
+    padding-top: 2%;
+    background: #fff
+}
+.reg-title{
+    width: 370px;
+    height: 50px;
+    padding: 18px 0;
+    left: 4%;
+    position: absolute;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.input-group{
+    top: 125px;
+    position: absolute;
+    width: 380px;
+    height: 100px;
+    transition: .5s;
+}
+.input-field{
+    width: 75%;
+    padding: 10px 0;
+    margin: 5px 0;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    font-family: Times, 'Times New Roman', serif;
+    font-size: 14px;
+    border-bottom: 1px solid #999;
+    outline: medium;
+    background: transparent;
+}
+.submit-btn{
+    width:75%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    border: 0;
+    font-family: Times, 'Times New Roman', serif;
+    font-size: 16px;
+    outline: none;
+    background: #087ca7;
+    border-radius: 30px;
+}
+.submit-btn:hover{
+    background-color: #999;
+    color: #000000;
+}
+.alert-message{
+    position: absolute;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+    background-color: #fff;
+    color: black;
+    text-align: left;
+}
