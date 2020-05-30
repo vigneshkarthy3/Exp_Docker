@@ -1,13 +1,15 @@
-FROM centos
+FROM ubuntu:latest
 MAINTAINER vigneshkarthi
-RUN yum update -y
-COPY src /src
+RUN apt-get update -y
+RUN apt-get install python mysql-devel -yq
+RUN apt-get -yqq install python-pip
+COPY ./src /src
 WORKDIR /src
 RUN pip install -r module.txt
 ARG HOST_NAME
 RUN sed -i 's#localhost#$HOST_NAME#' /src/templates/index.html
 RUN sed -i 's#localhost#$HOST_NAME#' /src/templates/schedule.html
 RUN sed -i 's#localhost#$HOST_NAME#' /src/application.py
-RUN yum install wget vim -y
+RUN apt-get install wget vim -y
 EXPOSE 8080
-CMD["python","application.py"]
+CMD [ "python" , "application.py" ]
