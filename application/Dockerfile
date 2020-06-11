@@ -2,7 +2,7 @@ FROM ubuntu:latest
 
 MAINTAINER vigneshkarthi
 
-ARG HOST_NAME
+ARG hostname
 
 COPY ./src /src
 
@@ -13,8 +13,8 @@ RUN apt-get update -y && \
     apt-get -yqq install python3-pip && \
     apt-get install libmysqlclient-dev python3-dev -yq && \
     pip3 install -r module.txt && \
-    sed -i 's#localhost#'"$HOST_NAME"'#' /src/application.py && \
-    apt-get install wget vim -y
+    sed -i 's:localhost:'"$hostname"':g' /src/application.py && \
+    echo $hostname
 
 EXPOSE 8080
 
