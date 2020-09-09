@@ -1,38 +1,38 @@
-## Exp_Docker
+# Exp_Docker
 Experiments on Docker images and containers
 
-## Database
+# Database
 
-# Build the database image
+## Build the database image
 
 docker build -t mysql-img:v1 .
 
-# Run the Container
+## Run the Container
 
 docker run -d -p 3306:3306 --name mysql_cont -e MYSQL_ROOT_PASSWORD=root mysql-img:v1
 
-# Login to the container
+## Login to the container
 
 docker exec -it mysql_cont bash
 
 --------------------------------------------------------------------------------------
 
-## Application
+# Application
 
-# Build the application image
+## Build the application image
 
 docker build -t app-img:v1 . --build-arg HOST_NAME={IP address of mysql network}
 
-# Run the container
+## Run the container
 
 docker run -d -p 8080:8080 --name app_cont app-img:v1
 
-# Login to the container
+## Login to the container
 
 docker exec -it app_cont bash
 
 
-# Some useful commands
+## Some useful commands
 
 List all containers (only IDs) docker ps -aq.
 Stop all running containers. docker stop $(docker ps -aq)
