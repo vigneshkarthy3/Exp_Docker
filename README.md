@@ -35,10 +35,13 @@ docker exec -it app_cont bash
 ## Some useful commands
 
 List all containers (only IDs).  
-docker ps -aq  
+docker ps -aq
+
 Stop all running containers.  
 docker stop $(docker ps -aq)  
+
 Remove all containers.  
 docker rm -f $(docker ps -aq)
+
 Remove all images.  
 docker rmi -f $(docker images -q)
